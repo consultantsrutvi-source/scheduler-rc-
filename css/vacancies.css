@@ -481,5 +481,61 @@
   appearance: auto;
   -webkit-appearance: menulist;
 }
+/* ===============================
+   Vacancies – Action Buttons Fix
+   =============================== */
+
+.vacancy-actions {
+  display: flex;
+  gap: 12px;              /* space between buttons */
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+/* Common button style */
+.vacancy-actions button,
+.vacancy-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* Print button */
+.vacancy-actions .btn-print {
+  background: #ffffff;
+  color: #0d6efd;
+  border: 1px solid #0d6efd;
+}
+
+.vacancy-actions .btn-print:hover {
+  background: #0d6efd;
+  color: #ffffff;
+}
+
+/* Add Vacancy button */
+.vacancy-actions .btn-add {
+  background: #0d6efd;
+  color: #ffffff;
+  border: 1px solid #0d6efd;
+}
+
+.vacancy-actions .btn-add:hover {
+  background: #084298;
+  border-color: #084298;
+}
+
+/* Icons inside buttons */
+.vacancy-actions i {
+  font-size: 14px;
+}
 
 
