@@ -27,11 +27,67 @@
   <button class="logout-btn" onclick="logout()">Logout</button>
 </header>
 
+  <div class="vacancies-page">
+
+  <!-- HEADER -->
+  <div class="vacancies-header">
+    <h2>Vacancies</h2>
+
+    <div class="action-buttons">
+      <button class="btn-outline" onclick="window.print()">🖨 Print</button>
+      <button class="btn-primary" onclick="openAddVacancy()">+ Add Vacancy</button>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filters-bar">
+    <input type="text" placeholder="Search College">
+    <input type="text" placeholder="Search / Select Place">
+    <select>
+      <option>All Subjects</option>
+    </select>
+    <select>
+      <option>All Levels</option>
+    </select>
+    <select>
+      <option>Status</option>
+    </select>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-card">
+    <table>
+      <thead>
+        <tr>
+          <th>Vacancy ID</th>
+          <th>College</th>
+          <th>Place</th>
+          <th>Subject</th>
+          <th>Level</th>
+          <th>Salary</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="vacancyTableBody">
+        <tr>
+          <td colspan="9" class="empty-state">
+            No vacancies yet. Click <b>Add Vacancy</b>.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
 <!-- ===== MAIN ===== -->
 <main class="app-container">
 
   <!-- HEADER -->
-  <div class="page-header">
+  <div class="-header">
     <h2>Vacancies</h2>
     <div>
       <button onclick="window.print()">🖨 Print</button>
