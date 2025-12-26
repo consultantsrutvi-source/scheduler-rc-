@@ -2,65 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Scheduler for RC – Dashboard</title>
+  <title>Dashboard – Scheduler for RC</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<script>
-  if (localStorage.getItem("rc_logged_in") !== "yes") {
-    window.location.href = "index.html";
-  }
-</script>
 
-<body class="app-bg">
+<body onload="requireLogin()">
 
-  <!-- ===== TOP NAV ===== -->
-  <header class="top-nav">
-    <div class="nav-left">
-      <img src="Logo.png.jpg" class="nav-logo" alt="Rutvi Logo">
-      <span class="app-title">Scheduler for RC</span>
-    </div>
+  <div class="dashboard-header">
+    <img src="logo.png.jpg" class="logo small">
+    <h2>Scheduler for RC – Dashboard</h2>
+    <button onclick="logout()" class="logout-btn">Logout</button>
+  </div>
 
-    <nav class="nav-links">
-      <a href="dashboard.html" class="active">Dashboard</a>
-      <a href="#">Vacancies</a>
-      <a href="#">Lecturers</a>
-      <a href="#">Assignments</a>
-    </nav>
-  </header>
+  <div class="dashboard-cards">
+    <div class="card">Vacancies<br><strong>0</strong></div>
+    <div class="card">Lecturers<br><strong>0</strong></div>
+    <div class="card">Assignments<br><strong>0</strong></div>
+  </div>
 
-  <!-- ===== MAIN CONTENT ===== -->
-  <main class="container">
-
-    <h2 class="page-title">Dashboard</h2>
-
-    <div class="card-grid">
-
-      <div class="stat-card">
-        <h3>Total Vacancies</h3>
-        <p class="stat-number">0</p>
-      </div>
-
-      <div class="stat-card">
-        <h3>Total Lecturers</h3>
-        <p class="stat-number">0</p>
-      </div>
-
-      <div class="stat-card">
-        <h3>Total Assignments</h3>
-        <p class="stat-number">0</p>
-      </div>
-
-    </div>
-
-  </main>
-
+  <script src="js/app.js"></script>
 </body>
 </html>
-<button onclick="logout()">Logout</button>
-
-<script>
-function logout() {
-  localStorage.removeItem("rc_logged_in");
-  window.location.href = "index.html";
-}
-</script>
