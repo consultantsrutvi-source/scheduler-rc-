@@ -1,86 +1,56 @@
-/*********************************
- * CONFIG
- *********************************/
-const PIN_CODE = "3011"; // 👉 change PIN if needed
+const PIN_CODE = "1234";
 
-/*********************************
- * LOGIN
- *********************************/
+/* PIN AUTO MOVE */
+const pins = document.querySelectorAll(".pin-box");
+
+pins.forEach((box, index) => {
+  box.addEventListener("input", () => {
+    if (box.value && index < pins.length - 1) {
+      pins[index + 1].focus();
+    }
+  });
+});
+
+/* ENTER KEY */
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter") login();
+});
+
+/* LOGIN */
 function login() {
-  const boxes = document.querySelectorAll(".pin-box");
   let pin = "";
+  pins.forEach(b => pin += b.value);
 
-  boxes.forEach(b => pin += b.value);
+  const status = document.getElementById("status");
 
   if (pin.length !== 4) {
-    showStatus("Enter 4-digit PIN ❌", "error");
+    status.textContent = "Enter 4-digit PIN ❌";
+    status.className = "error";
     return;
   }
 
   if (pin === PIN_CODE) {
-    // ✅ store login state
-    localStorage.setItem("rc_logged_in", "yes");
-
-    showStatus("Login successful ✅<br>Dashboard will load next...", "success");
-
-    setTimeout(() => {
-      window.location.href = "dashboard.html";
-    }, 800);
+    localStorage.setItem("rc_login", "yes");
+    status.textContent = "Login successful ✅";
+    status.className = "success";
+    setTimeout(() => window.location.href = "dashboard.html", 600);
   } else {
-    showStatus("Invalid PIN ❌", "error");
-    clearPin();
+    status.textContent = "Invalid PIN ❌";
+    status.className = "error";
+    pins.forEach(b => b.value = "");
+    pins[0].focus();
   }
 }
 
-/*********************************
- * AUTO MOVE BETWEEN PIN BOXES
- *********************************/
-function moveNext(current, index) {
-  if (current.value.length === 1) {
-    const next = document.getElementById("pin" + (index + 1));
-    if (next) next.focus();
-  }
-}
-
-/*********************************
- * CLEAR PIN
- *********************************/
-function clearPin() {
-  document.querySelectorAll(".pin-box").forEach(b => b.value = "");
-  document.getElementById("pin1").focus();
-}
-
-/*********************************
- * STATUS MESSAGE
- *********************************/
-function showStatus(msg, type) {
-  const el = document.getElementById("status");
-  el.innerHTML = msg;
-  el.className = type;
-}
-
-/*********************************
- * ENTER KEY SUPPORT
- *********************************/
-document.addEventListener("keydown", function (e) {
-  if (e.key === "Enter") {
-    login();
-  }
-});
-
-/*********************************
- * AUTH GUARD (FOR DASHBOARD)
- *********************************/
+/* AUTH CHECK */
 function requireLogin() {
-  if (localStorage.getItem("rc_logged_in") !== "yes") {
+  if (localStorage.getItem("rc_login") !== "yes") {
     window.location.href = "index.html";
   }
 }
 
-/*********************************
- * LOGOUT
- *********************************/
+/* LOGOUT */
 function logout() {
-  localStorage.removeItem("rc_logged_in");
+  localStorage.removeItem("rc_login");
   window.location.href = "index.html";
 }
