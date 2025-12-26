@@ -31,13 +31,19 @@
 <main class="app-container">
 
   <!-- HEADER -->
-  <div class="page-header">
-    <h2>Vacancies</h2>
-    <div>
-      <button onclick="window.print()">🖨️ Print</button>
-      <button onclick="location.href='add-vacancy.html'">➕ Add Vacancy</button>
-    </div>
+ 
+    <div class="page-header">
+  <h2>Vacancies</h2>
+
+  <!-- ADD CLASS HERE -->
+  <div class="vacancy-actions">
+ <button class="btn-print" onclick="window.print()">
+  🖨 <span>Print</span>
+</button>
+
+    <button class="btn-add" onclick="location.href='add-vacancy.html'">+ Add Vacancy</button>
   </div>
+</div>
 
   <!-- FILTERS -->
   <div class="filter-bar">
