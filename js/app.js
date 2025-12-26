@@ -10,21 +10,21 @@ function login() {
   inputs.forEach(input => pin += input.value);
 
   if (pin === MASTER_PIN) {
-    document.body.innerHTML = `
-      <div style="
-        height:100vh;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        font-family:Segoe UI;
-        background:#eaf2ff;
-        text-align:center;">
-        <h2>
-          Login successful ✅<br><br>
-          Dashboard will load next…
-          setTimeout(() => {
-  window.location.href = "dashboard.html";
-}, 800);
+
+  // ✅ remember login
+  localStorage.setItem("rc_logged_in", "yes");
+
+  document.getElementById("status").innerHTML =
+    "Login successful ✅<br>Dashboard will load next...";
+
+  setTimeout(() => {
+    window.location.href = "dashboard.html";
+  }, 800);
+
+} else {
+  document.getElementById("status").innerHTML =
+    "Invalid PIN ❌";
+}
 
         </h2>
       </div>
