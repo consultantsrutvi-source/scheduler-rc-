@@ -1,131 +1,128 @@
-/* ==============================
-   VACANCIES PAGE ONLY
-   ============================== */
+/* ================================
+   Vacancies Page – Modern UI
+   ================================ */
 
-/* Page header */
-.page-header {
+.vacancies-page {
+  padding: 24px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Header */
+.vacancies-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 18px;
 }
 
-.page-header h2 {
+.vacancies-header h2 {
   font-size: 22px;
   font-weight: 600;
-  color: #1e293b;
+  color: #1f2937;
 }
 
-.page-header button {
-  margin-left: 8px;
-  padding: 9px 14px;
-  border-radius: 10px;
-  border: none;
-  font-size: 14px;
-  cursor: pointer;
-  background: linear-gradient(90deg, #2563eb, #1e40af);
-  color: white;
-}
-
-/* Filter bar */
-.filter-bar {
-  background: #f8fafc;
-  border-radius: 16px;
-  padding: 14px 16px;
+/* Buttons */
+.action-buttons {
   display: flex;
-  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #fff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+}
+
+.btn-outline {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background: #f9fafb;
+}
+
+/* Filters */
+.filters-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 12px;
   margin-bottom: 20px;
-  box-shadow: inset 0 0 0 1px #e2e8f0;
 }
 
-.filter-bar input,
-.filter-bar select {
+.filters-bar input,
+.filters-bar select {
   padding: 10px 12px;
   border-radius: 10px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid #e5e7eb;
   font-size: 14px;
-  min-width: 200px;
-  background: #ffffff;
 }
 
-.filter-bar input::placeholder {
-  color: #94a3b8;
-}
-
-/* Searchable place input */
-#placeInput {
-  min-width: 240px;
-}
-
-#placeInput:focus,
-.filter-bar input:focus,
-.filter-bar select:focus {
+.filters-bar input:focus,
+.filters-bar select:focus {
   outline: none;
   border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.15);
 }
 
-/* Table wrapper */
-.table-wrapper {
-  background: white;
-  border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+/* Table Card */
+.table-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 10px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
   overflow-x: auto;
 }
 
 /* Table */
-.data-table {
+table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
 }
 
-.data-table thead {
+thead {
   background: #f1f5f9;
 }
 
-.data-table th {
-  padding: 14px;
+thead th {
+  text-align: left;
+  padding: 12px;
   font-weight: 600;
   color: #334155;
-  border-bottom: 1px solid #e2e8f0;
-  white-space: nowrap;
 }
 
-.data-table td {
-  padding: 13px 14px;
-  color: #475569;
-  border-bottom: 1px solid #f1f5f9;
-  white-space: nowrap;
+tbody td {
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
 }
 
-/* Hover effect */
-.data-table tbody tr:hover {
+tbody tr:hover {
   background: #f8fafc;
 }
 
-/* Empty row */
-.empty-row {
-  text-align: center;
-  padding: 40px;
-  color: #94a3b8;
-  font-size: 15px;
-}
-
-/* Status badges (future-ready) */
+/* Status Pills */
 .status-open {
   background: #dcfce7;
   color: #166534;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.status-assigned {
-  background: #dbeafe;
-  color: #1e40af;
   padding: 4px 10px;
   border-radius: 999px;
   font-size: 12px;
@@ -138,37 +135,42 @@
   padding: 4px 10px;
   border-radius: 999px;
   font-size: 12px;
-  font-weight: 500;
 }
 
-/* Action buttons (future) */
-.action-btn {
-  border: none;
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 30px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Actions */
+.row-actions button {
   background: transparent;
+  border: none;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16px;
   margin-right: 6px;
-  color: #2563eb;
 }
 
-.action-btn:hover {
-  color: #1e40af;
+.row-actions button:hover {
+  transform: scale(1.15);
 }
 
-/* Print mode */
+/* Print */
 @media print {
-  .filter-bar,
-  .page-header button,
-  .logout-btn,
-  nav {
+  .filters-bar,
+  .action-buttons,
+  .row-actions {
     display: none !important;
   }
 
   body {
-    background: white;
+    background: #fff;
   }
 
-  .table-wrapper {
+  .table-card {
     box-shadow: none;
   }
 }
