@@ -457,5 +457,29 @@
     padding: 8px;
   }
 }
+/* === FIX FILTER BAR BREAK === */
+.filter-bar {
+  display: grid;
+  grid-template-columns: 
+    1.2fr 1.2fr 1fr 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filter-bar input,
+.filter-bar select {
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  background: #fff;
+}
+
+/* prevent inline text rendering */
+.filter-bar select {
+  appearance: auto;
+  -webkit-appearance: menulist;
+}
 
 
