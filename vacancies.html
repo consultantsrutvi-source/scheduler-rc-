@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vacancies – Scheduler for RC</title>
+  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/vacancies.css">
+
+</head>
+
+<body class="app-body" onload="requireLogin()">
+
+<!-- ===== TOP NAV ===== -->
+<header class="app-header">
+  <div class="header-left">
+    <img src="logo.png.jpg" class="app-logo">
+    <span class="app-name">Scheduler for RC</span>
+  </div>
+
+  <nav class="header-nav">
+    <a href="dashboard.html">Dashboard</a>
+    <a class="active">Vacancies</a>
+    <a>Lecturers</a>
+    <a>Assignments</a>
+  </nav>
+
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main class="app-container">
+
+  <!-- HEADER -->
+  <div class="page-header">
+    <h2>Vacancies</h2>
+    <div>
+      <button onclick="window.print()">🖨 Print</button>
+      <button onclick="location.href='add-vacancy.html'">➕ Add Vacancy</button>
+    </div>
+  </div>
+
+  <!-- FILTERS -->
+  <div class="filter-bar">
+
+    <input type="text" placeholder="Search College">
+
+    <!-- PLACE SEARCH -->
+    <input
+      type="text"
+      id="placeInput"
+      list="placesList"
+      placeholder="Search / Select Place"
+      onblur="handleNewPlace()"
+    >
+
+    <datalist id="placesList">
+      <!-- Karnataka -->
+      <option value="Bengaluru Urban (Bangalore)">
+      <option value="Bengaluru Rural">
+      <option value="Chikkamagaluru (Chikmagalur)">
+      <option value="Mysuru (Mysore)">
+      <option value="Tumakuru (Tumkur)">
+      <option value="Mandya">
+      <option value="Hassan">
+      <option value="Udupi">
+      <option value="Shivamogga (Shimoga)">
+      <option value="Davanagere">
+      <option value="Chitradurga">
+      <option value="Belagavi (Belgaum)">
+      <option value="Ballari (Bellary)">
+      <option value="Kalaburagi (Gulbarga)">
+      <option value="Raichur">
+      <option value="Bidar">
+      <option value="Koppal">
+      <option value="Yadgir">
+      <option value="Vijayanagara">
+      <option value="Bagalkot">
+      <option value="Haveri">
+      <option value="Gadag">
+      <option value="Uttara Kannada (Karwar)">
+      <option value="Ramanagara">
+      <option value="Chamarajanagara">
+      <option value="Chikkaballapura">
+      <option value="Kolar">
+      <option value="Kodagu (Coorg)">
+      <option value="Dakshina Kannada (Mangalore)">
+
+      <!-- Other states -->
+      <option value="Hyderabad (Telangana)">
+      <option value="Visakhapatnam (Andhra Pradesh)">
+      <option value="Vijayawada (Andhra Pradesh)">
+      <option value="Mumbai">
+      <option value="Pune">
+      <option value="Pimpri-Chinchwad">
+      <option value="Nagpur">
+      <option value="Nashik">
+      <option value="Aurangabad">
+      <option value="Latur">
+      <option value="Chennai">
+      <option value="Coimbatore">
+      <option value="Namakkal">
+    </datalist>
+
+    <!-- SUBJECT -->
+    <select>
+      <option value="">All Subjects</option>
+      <option>Physics</option>
+      <option>Chemistry</option>
+      <option>Mathematics</option>
+      <option>Biology</option>
+      <option>Zoology</option>
+      <option>Botany</option>
+      <option>Others</option>
+    </select>
+
+    <!-- LEVEL -->
+    <select>
+      <option value="">All Levels</option>
+      <option>Boards</option>
+      <option>KCET</option>
+      <option>NEET</option>
+      <option>JEE Mains</option>
+      <option>JEE Advanced</option>
+      <option>Foundation</option>
+    </select>
+
+    <!-- STATUS -->
+    <select>
+      <option value="">Status</option>
+      <option>Open</option>
+      <option>Assigned</option>
+      <option>Closed</option>
+    </select>
+
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrapper">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Vacancy ID</th>
+          <th>College</th>
+          <th>Place</th>
+          <th>Subject</th>
+          <th>Level</th>
+          <th>Salary</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td colspan="9" class="empty-row">
+            No vacancies yet. Click <b>Add Vacancy</b>.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<script src="js/app.js"></script>
+
+<script>
+/* ===== REMEMBER NEW PLACES ===== */
+document.addEventListener("DOMContentLoaded", () => {
+  const saved = JSON.parse(localStorage.getItem("customPlaces") || "[]");
+  const list = document.getElementById("placesList");
+  saved.forEach(p => {
+    const o = document.createElement("option");
+    o.value = p;
+    list.appendChild(o);
+  });
+});
+
+function handleNewPlace() {
+  const input = document.getElementById("placeInput");
+  const val = input.value.trim();
+  if (!val) return;
+
+  const options = [...document.querySelectorAll("#placesList option")].map(o => o.value);
+  if (!options.includes(val)) {
+    const saved = JSON.parse(localStorage.getItem("customPlaces") || "[]");
+    saved.push(val);
+    localStorage.setItem("customPlaces", JSON.stringify(saved));
+
+    const opt = document.createElement("option");
+    opt.value = val;
+    document.getElementById("placesList").appendChild(opt);
+  }
+}
+</script>
+
+</body>
+</html>
