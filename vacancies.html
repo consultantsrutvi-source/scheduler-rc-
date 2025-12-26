@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Vacancies – Scheduler for RC</title>
   <link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/vacancies.css">
+  <link rel="stylesheet" href="css/vacancies.css">
 
 </head>
 
@@ -31,19 +31,13 @@
 <main class="app-container">
 
   <!-- HEADER -->
- 
-    <div class="page-header">
-  <h2>Vacancies</h2>
-
-  <!-- ADD CLASS HERE -->
-  <div class="vacancy-actions">
- <button class="btn-print" onclick="window.print()">
-  🖨 <span>Print</span>
-</button>
-
-    <button class="btn-add" onclick="location.href='add-vacancy.html'">+ Add Vacancy</button>
+  <div class="page-header">
+    <h2>Vacancies</h2>
+    <div>
+      <button onclick="window.print()">🖨 Print</button>
+      <button onclick="location.href='add-vacancy.html'">➕ Add Vacancy</button>
+    </div>
   </div>
-</div>
 
   <!-- FILTERS -->
   <div class="filter-bar">
@@ -52,15 +46,14 @@
 
     <!-- PLACE SEARCH -->
     <input
-  type="text"
-  id="placeInput"
-  list="placesList"
-  placeholder="Search / Select Place"
-  
-/>
+      type="text"
+      id="placeInput"
+      list="placesList"
+      placeholder="Search / Select Place"
+      onblur="handleNewPlace()"
+    >
 
-<datalist id="placesList"></datalist>
-
+    <datalist id="placesList">
       <!-- Karnataka -->
       <option value="Bengaluru Urban (Bangalore)">
       <option value="Bengaluru Rural">
@@ -70,9 +63,6 @@
       <option value="Mandya">
       <option value="Hassan">
       <option value="Udupi">
-      <option value="Hubli">
-      <option value="Dharwad">
-      <option value="Davangere ">
       <option value="Shivamogga (Shimoga)">
       <option value="Davanagere">
       <option value="Chitradurga">
@@ -191,8 +181,6 @@ function handleNewPlace() {
   const input = document.getElementById("placeInput");
   const val = input.value.trim();
   if (!val) return;
-  
-const normalized = val.toLowerCase();
 
   const options = [...document.querySelectorAll("#placesList option")].map(o => o.value);
   if (!options.includes(val)) {
@@ -206,52 +194,6 @@ const normalized = val.toLowerCase();
   }
 }
 </script>
-<script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBNNeS3cJfdSVqRCxW1LEBkDTlVwQKKxPlv29f73HaXszXY7ioUTrwX8_BZMOyL9JyAQ/exec";
-
-async function loadVacancies() {
-  const res = await fetch(SCRIPT_URL);
-  const data = await res.json();
-
-  const tbody = document.getElementById("vacancyTableBody");
-  tbody.innerHTML = "";
-
-  if (data.length === 0) {
-    tbody.innerHTML = `
-      <tr>
-        <td colspan="9" class="empty-state">No vacancies found</td>
-      </tr>`;
-    return;
-  }
-
-  data.forEach(v => {
-    tbody.innerHTML += `
-      <tr>
-        <td>${v.VacancyID}</td>
-        <td>${v.CollegeName}</td>
-        <td>${v.City}</td>
-        <td>${v.Subject}</td>
-        <td>${v.Level}</td>
-        <td>${v.SalaryRange}</td>
-        <td>${v.Phone}</td>
-        <td><span class="status-badge status-${v.Status.toLowerCase()}">${v.Status}</span></td>
-        <td>🖨</td>
-      </tr>`;
-  });
-}
-
-document.addEventListener("DOMContentLoaded", loadVacancies);
-</script>
-
-        </tbody>
-      </table>
-    </section>
-  </main>
-
-  <!-- Disable all JS for now -->
-  <!-- <script src="js/app.js"></script> -->
-  <!-- <script src="js/vacancies.js"></script> -->
 
 </body>
 </html>
-
