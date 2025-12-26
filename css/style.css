@@ -247,3 +247,89 @@ body {
   box-shadow: 0 0 0 2px #2563eb;
 }
 
+/* ===== APP BACKGROUND ===== */
+.app-bg {
+  background: #f1f5f9;
+  min-height: 100vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ===== TOP NAV ===== */
+.top-nav {
+  height: 64px;
+  background: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-logo {
+  width: 36px;
+  height: 36px;
+}
+
+.app-title {
+  font-weight: 600;
+  font-size: 16px;
+  color: #1e293b;
+}
+
+/* ===== NAV LINKS ===== */
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  font-size: 14px;
+  color: #475569;
+  padding-bottom: 4px;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: #2563eb;
+  border-bottom: 2px solid #2563eb;
+}
+
+/* ===== CONTENT ===== */
+.container {
+  padding: 30px;
+}
+
+.page-title {
+  margin-bottom: 20px;
+  color: #1e293b;
+}
+
+/* ===== DASHBOARD CARDS ===== */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.stat-card h3 {
+  margin: 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+.stat-number {
+  margin-top: 10px;
+  font-size: 32px;
+  font-weight: 700;
+  color: #2563eb;
+}
