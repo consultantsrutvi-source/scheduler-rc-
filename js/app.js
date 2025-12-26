@@ -22,6 +22,10 @@ function login() {
         <h2>
           Login successful ✅<br><br>
           Dashboard will load next…
+          setTimeout(() => {
+  window.location.href = "dashboard.html";
+}, 800);
+
         </h2>
       </div>
     `;
