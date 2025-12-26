@@ -32,15 +32,23 @@ function login() {
 const pinInputs = document.querySelectorAll(".pin-input");
 
 pinInputs.forEach((input, index) => {
+
   input.addEventListener("input", () => {
+    input.classList.add("filled");
+
     if (input.value && index < pinInputs.length - 1) {
       pinInputs[index + 1].focus();
     }
   });
 
   input.addEventListener("keydown", (e) => {
-    if (e.key === "Backspace" && !input.value && index > 0) {
-      pinInputs[index - 1].focus();
+    if (e.key === "Backspace") {
+      input.value = "";
+      input.classList.remove("filled");
+
+      if (index > 0) {
+        pinInputs[index - 1].focus();
+      }
     }
   });
 });
