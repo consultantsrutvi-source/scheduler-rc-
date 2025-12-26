@@ -6,24 +6,25 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="login-bg">
+<body class="login-body">
 
- <div class="login-card">
+  <div class="login-card">
+    <img src="logo.png.jpg" class="logo">
 
-  <img src="logo.png.jpg" alt="Rutvi Logo" class="login-logo">
+    <h1>Scheduler for RC</h1>
+    <p class="subtitle">Internal Scheduling System</p>
 
-  <h1>Scheduler for RC</h1>
-  <p class="subtitle">Internal Scheduling System</p>
+    <div class="pin-row">
+      <input id="pin1" class="pin-box" maxlength="1" inputmode="numeric">
+      <input id="pin2" class="pin-box" maxlength="1" inputmode="numeric">
+      <input id="pin3" class="pin-box" maxlength="1" inputmode="numeric">
+      <input id="pin4" class="pin-box" maxlength="1" inputmode="numeric">
+    </div>
 
-<div class="pin-box">
-  <input type="password" maxlength="1" class="pin-input" />
-  <input type="password" maxlength="1" class="pin-input" />
-  <input type="password" maxlength="1" class="pin-input" />
-  <input type="password" maxlength="1" class="pin-input" />
-</div>
+    <button onclick="login()">Login</button>
 
-<button onclick="login()">Login</button>
-<div class="error" id="error"></div>
+    <div id="status"></div>
+  </div>
 
   <script src="js/app.js"></script>
 </body>
