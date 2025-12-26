@@ -2,23 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard – Scheduler for RC</title>
+  <title>Scheduler for RC – Dashboard</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body onload="requireLogin()">
+<body class="app-body" onload="requireLogin()">
 
-  <div class="dashboard-header">
-    <img src="logo.png.jpg" class="logo small">
-    <h2>Scheduler for RC – Dashboard</h2>
-    <button onclick="logout()" class="logout-btn">Logout</button>
-  </div>
+  <!-- ===== TOP NAV ===== -->
+  <header class="app-header">
+    <div class="header-left">
+      <img src="logo.png.jpg" class="app-logo">
+      <span class="app-name">Scheduler for RC</span>
+    </div>
 
-  <div class="dashboard-cards">
-    <div class="card">Vacancies<br><strong>0</strong></div>
-    <div class="card">Lecturers<br><strong>0</strong></div>
-    <div class="card">Assignments<br><strong>0</strong></div>
-  </div>
+    <nav class="header-nav">
+      <a class="active">Dashboard</a>
+      <a>Vacancies</a>
+      <a>Lecturers</a>
+      <a>Assignments</a>
+    </nav>
+
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </header>
+
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="app-container">
+
+    <h2 class="section-title">Overview</h2>
+
+    <!-- ===== STATS ===== -->
+    <div class="stats-grid">
+
+      <div class="stat-box blue">
+        <h4>Total Vacancies</h4>
+        <span>0</span>
+      </div>
+
+      <div class="stat-box green">
+        <h4>Active Lecturers</h4>
+        <span>0</span>
+      </div>
+
+      <div class="stat-box purple">
+        <h4>Assignments Today</h4>
+        <span>0</span>
+      </div>
+
+      <div class="stat-box orange">
+        <h4>Pending Matches</h4>
+        <span>0</span>
+      </div>
+
+    </div>
+
+    <!-- ===== QUICK ACTIONS ===== -->
+    <h2 class="section-title">Quick Actions</h2>
+
+    <div class="action-grid">
+
+      <div class="action-card">
+        ➕<br>
+        <strong>Add Vacancy</strong>
+        <p>Create a new college requirement</p>
+      </div>
+
+      <div class="action-card">
+        ➕<br>
+        <strong>Add Lecturer</strong>
+        <p>Register available faculty</p>
+      </div>
+
+      <div class="action-card">
+        ⚡<br>
+        <strong>Create Assignment</strong>
+        <p>Auto or manual matching</p>
+      </div>
+
+    </div>
+
+  </main>
 
   <script src="js/app.js"></script>
 </body>
