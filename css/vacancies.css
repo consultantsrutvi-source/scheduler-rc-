@@ -229,4 +229,53 @@
 .vacancy-actions i {
   font-size: 14px;
 }
+/* ===== PRINT BUTTON (PRO LEVEL) ===== */
+
+.vacancy-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Print Button */
+.btn-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  background: linear-gradient(135deg, #2b6cb0, #1e4fa1);
+  color: #ffffff;
+
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+
+  box-shadow: 0 6px 14px rgba(43,108,176,0.25);
+  transition: all 0.25s ease;
+}
+
+.btn-print:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(43,108,176,0.35);
+  background: linear-gradient(135deg, #1e4fa1, #173b7a);
+}
+
+.btn-print:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(43,108,176,0.25);
+}
+
+/* Hide print button during printing */
+@media print {
+  .btn-print,
+  .btn-add,
+  .logout-btn,
+  nav {
+    display: none !important;
+  }
+}
 
