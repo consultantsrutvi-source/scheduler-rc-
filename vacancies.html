@@ -190,6 +190,8 @@ function handleNewPlace() {
   const input = document.getElementById("placeInput");
   const val = input.value.trim();
   if (!val) return;
+  
+const normalized = val.toLowerCase();
 
   const options = [...document.querySelectorAll("#placesList option")].map(o => o.value);
   if (!options.includes(val)) {
@@ -202,6 +204,42 @@ function handleNewPlace() {
     document.getElementById("placesList").appendChild(opt);
   }
 }
+</script>
+<script>
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxBNNeS3cJfdSVqRCxW1LEBkDTlVwQKKxPlv29f73HaXszXY7ioUTrwX8_BZMOyL9JyAQ/exec";
+
+async function loadVacancies() {
+  const res = await fetch(SCRIPT_URL);
+  const data = await res.json();
+
+  const tbody = document.getElementById("vacancyTableBody");
+  tbody.innerHTML = "";
+
+  if (data.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="9" class="empty-state">No vacancies found</td>
+      </tr>`;
+    return;
+  }
+
+  data.forEach(v => {
+    tbody.innerHTML += `
+      <tr>
+        <td>${v.VacancyID}</td>
+        <td>${v.CollegeName}</td>
+        <td>${v.City}</td>
+        <td>${v.Subject}</td>
+        <td>${v.Level}</td>
+        <td>${v.SalaryRange}</td>
+        <td>${v.Phone}</td>
+        <td><span class="status-badge status-${v.Status.toLowerCase()}">${v.Status}</span></td>
+        <td>🖨</td>
+      </tr>`;
+  });
+}
+
+document.addEventListener("DOMContentLoaded", loadVacancies);
 </script>
 
 </body>
